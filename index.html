@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pour toi ❤️</title>
+  <!-- Import d'une police romantique depuis Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fce4ec; /* Fond rose doux */
+      font-family: sans-serif;
+    }
+
+    .envelope-wrapper {
+      position: relative;
+      cursor: pointer;
+    }
+
+    /* Petit texte d'instruction flottant */
+    .instruction {
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #d81b60;
+      font-size: 14px;
+      font-weight: bold;
+      animation: bounce 2s infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes bounce {
+      0%, 100% { top: -40px; }
+      50% { top: -45px; }
+    }
+
+    /* Le corps de l'enveloppe */
+    .envelope {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      background-color: #f06292;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Les rabats de l'enveloppe (créés avec des bordures CSS) */
+    .top-flap {
+      position: absolute;
+      top: 0; left: 0;
+      border-top: 100px solid #ec407a;
+      border-left: 150px solid transparent;
+      border-right: 150px solid transparent;
+      transform-origin: top;
+      z-index: 5;
+      /* Animation d'ouverture */
+      transition: transform 0.4s ease-in-out, z-index 0s 0.4s;
+    }
+
+    .left-flap {
+      position: absolute;
+      top: 0; left: 0;
+      border-left: 150px solid #d81b60;
+      border-top: 100px solid transparent;
+      border-bottom: 100px solid transparent;
+      z-index: 4;
+    }
+
+    .right-flap {
+      position: absolute;
+      top: 0; right: 0;
+      border-right: 150px solid #c2185b;
+      border-top: 100px solid transparent;
+      border-bottom: 100px solid transparent;
+      z-index: 4;
+    }
+
+    .bottom-flap {
+      position: absolute;
+      bottom: 0; left: 0;
+      border-bottom: 100px solid #ad1457;
+      border-left: 150px solid transparent;
+      border-right: 150px solid transparent;
+      z-index: 4;
+    }
+
+    /* La lettre à l'intérieur */
+    .letter {
+      position: absolute;
+      bottom: 5px;
+      left: 10px;
+      width: 280px;
+      height: 180px;
+      background-color: #fff;
+      z-index: 3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      /* Animation de sortie */
+      transition: transform 0.4s ease-in-out 0s, z-index 0s 0s;
+    }
+
+    .letter p {
+      font-family: 'Dancing Script', cursive;
+      font-size: 32px;
+      color: #c2185b;
+      margin: 0;
+      padding: 15px;
+      line-height: 1.2;
+    }
+
+    /* État ouvert (déclenché par le clic en JS) */
+    .open .top-flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+      transition: transform 0.4s ease-in-out, z-index 0s;
+    }
+
+    .open .letter {
+      transform: translateY(-120px);
+      z-index: 6; /* Passe au premier plan */
+      transition: transform 0.4s ease-in-out 0.4s, z-index 0s 0.4s;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Conteneur principal -->
+  <div class="envelope-wrapper" id="envelope">
+    <div class="instruction">Clique-moi ❤️</div>
+    <div class="envelope">
+      <div class="top-flap"></div>
+      <div class="left-flap"></div>
+      <div class="right-flap"></div>
+      <div class="bottom-flap"></div>
+      <div class="letter">
+        <p>happy girlfriend's day babe❤️</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script pour l'interaction -->
+  <script>
+    const envelope = document.getElementById('envelope');
+    envelope.addEventListener('click', () => {
+      // Ajoute ou retire la classe 'open' au clic
+      envelope.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>
